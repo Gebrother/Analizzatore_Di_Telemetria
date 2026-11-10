@@ -51,6 +51,23 @@
         }
     }
 
+    $ping_unici = array_unique($ping_validi);
+    
+    $ping_ordinati = $ping_unici;
+
+    sort($ping_ordinati);
+
+    $top_3_veloci = array_slice($ping_ordinati, 0, 3);
+
+    $controllo_100ms = "";
+
+    if(in_array(100, $ping_ordinati)) {
+        $controllo_100ms = "Si" ;
+
+    }
+    else{
+        $controllo_100ms = "No";
+    }
 
 ?>
 
@@ -80,6 +97,33 @@
             <li><?php echo($valori); ?></li>
         <?php endforeach; ?> 
     </ul>
+
+    <h3>Pacchetti Unici</h3>
+    <ul>
+        <?php foreach ($ping_unici as $valori ): ?>
+            <li><?php echo($valori); ?></li>
+        <?php endforeach; ?> 
+    </ul>
+
+    <h3>Pacchetti Ordinati</h3>
+    <ul>
+        <?php foreach ($ping_ordinati as $valori ): ?>
+            <li><?php echo($valori); ?></li>
+        <?php endforeach; ?> 
+    </ul>
+
+    <h3>I 3 Pacchetti piu veloci</h3>
+    <ul>
+        <?php foreach ($top_3_veloci as $valori ): ?>
+            <li><?php echo($valori); ?></li>
+        <?php endforeach; ?> 
+    </ul>
+    
+    <h3>Conttrollo 100ms </h3>
+    <ul>
+         <li><?php echo($controllo_100ms) ?></li>
+    </ul>
+
 
 
 </body>
