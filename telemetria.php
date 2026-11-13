@@ -85,5 +85,26 @@
         <li>Massimo: <?= $ping_max ?></li>
     </ul>
 
+    <table>
+
+        <thead> 
+            <tr>
+                <th> # </th>
+                <th> Ping (ms) </th>
+                <th> Stato </th>
+            </tr>
+        </thead>
+
+        <tbody> 
+            <?php for ($i = 0; $i < count($ping_validi); $i++ ): ?>
+                <tr>
+                    <td> <?= $i+1 ?></td>
+                    <td> <?= $ping_validi[$i]; ?></td>
+                    <td> <?= $ping_validi[$i] >= 150 ? "Critico" : "Normale"  ?></td>
+                </tr>
+            <?php endfor; ?>
+        </tbody>
+    </table>
+
 </body>
 </html>
