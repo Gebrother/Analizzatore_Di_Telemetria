@@ -1,11 +1,8 @@
-<?php
+<?php 
+    
     $ping_grezzi = [45, 120, -1, 32, 210, 85, -1, 18, 95, 310, 45, 60, -1, 150, 28, 240, 18, 72];
-
-    $ping_grezzi[] = 55;
-    $ping_grezzi[] = 190;
-    $ping_grezzi[] = 12;
-
-
+    
+    array_push($ping_grezzi, 55, 190, 12);
 
     $ping_validi = [];
     $pacchetti_persi = 0;
@@ -23,19 +20,19 @@
     $media = 0;
     $cont = 0;
 
-    $max = $ping_validi[0];
-    $min = $ping_validi[0];
+    $ping_max = $ping_validi[0];
+    $ping_min = $ping_validi[0];
 
     foreach ($ping_validi as $valori){
         $somma += $valori;
         $cont++;
 
-        if($max < $valori){
-            $max = $valori;
+        if($ping_max < $valori){
+            $ping_max = $valori;
         }
 
-        if($min > $valori){
-            $min = $valori;
+        if($ping_min > $valori){
+            $ping_min = $valori;
         }
 
 
@@ -79,52 +76,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Pachetti Persi <?php echo($pacchetti_persi) ?></h1>
-
     <ul>
-        <?php foreach ($ping_validi as $valori ): ?>
-            <li><?php echo($valori); ?></li>
-        <?php endforeach; ?> 
+        <li>Totale Rilevazione: <?= (count($ping_grezzi)); ?></li>
+        <li>Pacchetti validi: <?= count($ping_validi)?></li>
+        <li>Pacchetti Persi: <?= $pacchetti_persi ?> </li>
+        <li>Media: <?= round($media, 2 ) ?></li>
+        <li>Minimo: <?= $ping_min ?></li>
+        <li>Massimo: <?= $ping_max ?></li>
     </ul>
-
-    <h2>La media è: <?php echo(round($media, 2)) ?></h2>
-    <h2>Il massimo è: <?php echo($max) ?></h2>
-    <h2>Il minimo è: <?php echo($min) ?></h2>
-    
-    <h3>Pacchetti Critici</h3>
-    <ul>
-        <?php foreach ($ping_critici as $valori ): ?>
-            <li><?php echo($valori); ?></li>
-        <?php endforeach; ?> 
-    </ul>
-
-    <h3>Pacchetti Unici</h3>
-    <ul>
-        <?php foreach ($ping_unici as $valori ): ?>
-            <li><?php echo($valori); ?></li>
-        <?php endforeach; ?> 
-    </ul>
-
-    <h3>Pacchetti Ordinati</h3>
-    <ul>
-        <?php foreach ($ping_ordinati as $valori ): ?>
-            <li><?php echo($valori); ?></li>
-        <?php endforeach; ?> 
-    </ul>
-
-    <h3>I 3 Pacchetti piu veloci</h3>
-    <ul>
-        <?php foreach ($top_3_veloci as $valori ): ?>
-            <li><?php echo($valori); ?></li>
-        <?php endforeach; ?> 
-    </ul>
-    
-    <h3>Conttrollo 100ms </h3>
-    <ul>
-         <li><?php echo($controllo_100ms) ?></li>
-    </ul>
-
-
 
 </body>
 </html>
