@@ -83,6 +83,12 @@
         <li>Media: <?= round($media, 2 ) ?></li>
         <li>Minimo: <?= $ping_min ?></li>
         <li>Massimo: <?= $ping_max ?></li>
+        <li>Top 3 Migliri tempi: 
+            <?php foreach($top_3_veloci as $top3): ?>        
+                <?= $top3; ?>
+            <?php endforeach ?>
+        </li>
+        <li>Controllo 100 ms: <?= $controllo_100ms ?></li>
     </ul>
 
     <table>
